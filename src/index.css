@@ -1,0 +1,13 @@
+body{
+  background-color: black;
+  color: white;
+}
+
+.title{
+  font-family: 'Orbitron', sans-serif;
+  font-size: 80px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 35vh;
+  
+}
