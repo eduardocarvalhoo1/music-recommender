@@ -1,11 +1,14 @@
 import SearchBar from './components/SearchBar';
 import Title from './components/Title';
+import { SearchProvider } from './contexts/SearchContext';
 
 function App() {
   return (
     <>
-      <Title />
-      <SearchBar />
+      <SearchProvider>
+        <Title />
+        <SearchBar />
+      </SearchProvider>
     </>
   );
 }

@@ -1,11 +1,27 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { TextField, InputAdornment, IconButton, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { SearchContext } from '../contexts/SearchContext';
 
 export default function SearchBar() {
+
+  const inputRef = useRef();
+  const { fetchSimilarArtists } = useContext(SearchContext);
+
+  const handleSearch = () => {
+    const value = inputRef.current.value.trim();
+
+    if (value) {
+      fetchSimilarArtists(value);
+    }
+  }
   return (
     <Box
       component="form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch();
+      }}
       sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -17,6 +33,7 @@ export default function SearchBar() {
       autoComplete="off"
     >
       <TextField 
+        inputRef={inputRef}
         id="outlined-basic" 
         label="Buscar artista ou música" 
         variant="outlined" 
@@ -45,7 +62,7 @@ export default function SearchBar() {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton /*onClick={handleSearch}*/ sx={{color: 'gray'}}>
+                <IconButton onClick={handleSearch} sx={{color: 'gray'}}>
                   <SearchIcon />
                 </IconButton>
               </InputAdornment>
