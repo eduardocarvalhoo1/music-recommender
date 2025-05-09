@@ -2,7 +2,7 @@ import { children, createContext, useState } from 'react';
 
 export const SearchContext = createContext();
 
-const API_KEY = ''; // ***Insira a chave da API aqui***
+const API_KEY = '70ac338966f486ecf83b198e2c0b6dcd'; // ***Insira a chave da API aqui***
 
 export const SearchProvider = ({children}) => {
     const [similarArtists, setSimilarArtists] = useState([]);
@@ -13,6 +13,7 @@ export const SearchProvider = ({children}) => {
         setLoading(true);
         
         try {
+            console.log("Chave da API:", API_KEY);
             const res = await fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${encodeURIComponent(artistName)}&api_key=${API_KEY}&format=json`);
             const data = await res.json();
             
