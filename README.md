@@ -1,6 +1,6 @@
 # Music Recommendation App
 
-Este é um aplicativo de recomendação de músicas que utiliza a API do Last.fm para fornecer recomendações de músicas e artistas semelhantes com base nas suas buscas. O app foi desenvolvido utilizando React e usa o Context API para gerenciamento de estado.
+Este é um aplicativo de recomendação de músicas que utiliza a API do [Last.fm](https://www.last.fm/api) para fornecer recomendações de músicas e artistas semelhantes com base nas suas buscas. O app foi desenvolvido utilizando React e usa o Context API para gerenciamento de estado.
 
 ## Funcionalidades
 
@@ -15,3 +15,4 @@ Este é um aplicativo de recomendação de músicas que utiliza a API do Last.fm
 - **Material-UI**: Biblioteca de componentes React para estilização e componentes pré-fabricados.
 - **Context API**: Para gerenciamento de estado global.
 - **Fetch API**: Para realizar as requisições para a API do Last.fm.
+
