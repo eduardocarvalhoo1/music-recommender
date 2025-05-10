@@ -1,12 +1,17 @@
-# React + Vite
+# Music Recommendation App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um aplicativo de recomendação de músicas que utiliza a API do Last.fm para fornecer recomendações de músicas e artistas semelhantes com base nas suas buscas. O app foi desenvolvido utilizando React e usa o Context API para gerenciamento de estado.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Busca por Artistas**: Você pode pesquisar artistas e obter uma lista de artistas semelhantes com base na sua busca.
+- **Busca por Músicas**: Você pode pesquisar uma música no formato `Nome da música - Nome do artista` e obter recomendações de músicas semelhantes.
+- **Interface de Usuário**: A interface é construída com Material-UI para uma experiência de usuário moderna e responsiva.
+- **Carregamento Dinâmico**: O app exibe um indicador de carregamento enquanto busca as informações na API.
 
-## Expanding the ESLint configuration
+## Tecnologias Usadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React.js**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Material-UI**: Biblioteca de componentes React para estilização e componentes pré-fabricados.
+- **Context API**: Para gerenciamento de estado global.
+- **Fetch API**: Para realizar as requisições para a API do Last.fm.
