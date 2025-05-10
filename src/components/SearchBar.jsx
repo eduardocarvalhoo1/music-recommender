@@ -1,20 +1,43 @@
-import React, { useContext, useRef } from 'react';
-import { TextField, InputAdornment, IconButton, Box } from '@mui/material';
+import React, { useContext, useRef, useState } from 'react';
+import { TextField, InputAdornment, IconButton, Box, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { SearchContext } from '../contexts/SearchContext';
 
 export default function SearchBar() {
-
   const inputRef = useRef();
-  const { fetchSimilarArtists } = useContext(SearchContext);
+  const [type, setType] = useState('artist'); // <- adicionado
+  const { fetchSimilarArtists, fetchSimilarTracks } = useContext(SearchContext);
 
-  const handleSearch = () => {
+  /*const handleSearch = () => {
     const value = inputRef.current.value.trim();
 
     if (value) {
-      fetchSimilarArtists(value);
+      if (type === 'artist') {
+        fetchSimilarArtists(value);
+      } else if (type === 'track') {
+        fetchSimilarTracks(value);
+      }
     }
-  }
+  };*/
+  const handleSearch = () => {
+    const value = inputRef.current.value.trim();
+  
+    if (value) {
+      if (type === 'artist') {
+        fetchSimilarArtists(value);
+      } else if (type === 'track') {
+        const [track, artist] = value.split(' - ').map((v) => v.trim());
+        
+        if (track && artist) {
+          fetchSimilarTracks(track, artist);
+        } else {
+          alert('Por favor, digite no formato: Nome da música - Nome do artista');
+        }
+      }
+    }
+  };
+  
+
   return (
     <Box
       component="form"
@@ -24,6 +47,7 @@ export default function SearchBar() {
       }}
       sx={{
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             height: 'auto',
@@ -32,6 +56,35 @@ export default function SearchBar() {
       noValidate
       autoComplete="off"
     >
+  <ToggleButtonGroup
+    value={type}
+    exclusive
+    onChange={(event, newType) => {
+      if (newType !== null) setType(newType);
+    }}
+    size="small"
+    sx={{
+      mb: 1,
+      backgroundColor: '#2c2c2c',
+      borderRadius: '20px',
+      '& .MuiToggleButton-root': {
+        color: 'gray',
+        border: 'none',
+        fontFamily: 'Orbitron, sans-serif',
+        '&.Mui-selected': {
+          backgroundColor: 'white',
+          color: 'black',
+        },
+        '&:hover': {
+          backgroundColor: '#444',
+        },
+      },
+    }}
+  >
+      <ToggleButton value="artist">🎤 Artista</ToggleButton>
+      <ToggleButton value="track">🎵 Música</ToggleButton>
+    </ToggleButtonGroup>
+
       <TextField 
         inputRef={inputRef}
         id="outlined-basic" 

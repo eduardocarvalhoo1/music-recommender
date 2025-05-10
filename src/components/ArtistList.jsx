@@ -3,7 +3,7 @@ import { SearchContext } from '../contexts/SearchContext';
 import CircularIndeterminate from './Loading';
 
 export const ArtistsList = () => {
-  const { similarArtists, loading } = useContext(SearchContext);
+  const { similarArtists, loading, hasSearched, searchType } = useContext(SearchContext);
 
   if (loading) {
     return (
@@ -13,13 +13,16 @@ export const ArtistsList = () => {
     );
   }
 
-  if (similarArtists.length === 0) {
+  if (hasSearched && similarArtists.length === 0) {
     return (
       <p style={{ textAlign: 'center', fontFamily: 'Orbitron, sans-serif' }}>
         Nenhum artista encontrado.
       </p>
     );
   }
+
+  if (!hasSearched) return null;
+  if (searchType !== 'artist') return null;
 
   return (
     <div style={{ fontFamily: 'Orbitron, sans-serif', padding: '20px' }}>
