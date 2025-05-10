@@ -2,7 +2,7 @@ import { children, createContext, useState } from 'react';
 
 export const SearchContext = createContext();
 
-const API_KEY = '70ac338966f486ecf83b198e2c0b6dcd'; // ***Insira a chave da API aqui***
+const API_KEY = ''; // ***Insira a chave da API aqui***
 
 export const SearchProvider = ({children}) => {
     const [similarArtists, setSimilarArtists] = useState([]);
